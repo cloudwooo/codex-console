@@ -207,7 +207,7 @@ class FreemailService(BaseEmailService):
             try:
                 mails = self._make_request("GET", "/api/emails", params={"mailbox": email, "limit": 20})
                 if not isinstance(mails, list):
-                    time.sleep(3)
+                    time.sleep(8)
                     continue
 
                 for mail in mails:
@@ -257,7 +257,7 @@ class FreemailService(BaseEmailService):
             except Exception as e:
                 logger.debug(f"检查 Freemail 邮件时出错: {e}")
 
-            time.sleep(3)
+            time.sleep(8)
 
         logger.warning(f"等待 Freemail 验证码超时: {email}")
         return None
