@@ -44,7 +44,7 @@ class ProxySettings(BaseModel):
 
 class RegistrationSettings(BaseModel):
     """注册设置"""
-    max_retries: int = 3
+    max_retries: int = 4
     timeout: int = 120
     default_password_length: int = 12
     sleep_min: int = 5
