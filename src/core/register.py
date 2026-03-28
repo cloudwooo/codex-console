@@ -1385,7 +1385,7 @@ class RegistrationEngine:
         login_otp_tried_codes: set[str] = set()
         login_otp_ok = self._verify_email_otp_with_retry(
             stage_label="登录验证码",
-            max_attempts=1,
+            max_attempts=2,
             fetch_timeout=120,
             attempted_codes=login_otp_tried_codes,
         )
@@ -1395,7 +1395,7 @@ class RegistrationEngine:
             if resent:
                 login_otp_ok = self._verify_email_otp_with_retry(
                     stage_label="登录验证码(原地重发)",
-                    max_attempts=2,
+                    max_attempts=4,
                     fetch_timeout=120,
                     attempted_codes=login_otp_tried_codes,
                 )
@@ -1410,7 +1410,7 @@ class RegistrationEngine:
                     return False
             login_otp_ok = self._verify_email_otp_with_retry(
                 stage_label="登录验证码(重发)",
-                max_attempts=3,
+                max_attempts=5,
                 fetch_timeout=120,
                 attempted_codes=login_otp_tried_codes,
             )
