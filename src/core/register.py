@@ -2257,7 +2257,7 @@ class RegistrationEngine:
                     if self._validate_verification_code(code):
                         return True
                     if attempt < max_attempts:
-                        time.sleep(2)
+                        time.sleep(5)
                         continue
                     return False
 
@@ -2266,7 +2266,7 @@ class RegistrationEngine:
                         f"{stage_label}第 {attempt}/{max_attempts} 次命中重复验证码 {code}，等待新邮件...",
                         "warning",
                     )
-                    time.sleep(2)
+                    time.sleep(8)
                     continue
                 return False
 
@@ -2280,7 +2280,7 @@ class RegistrationEngine:
                     f"{stage_label}第 {attempt}/{max_attempts} 次校验未通过，疑似旧验证码，自动重试下一封...",
                     "warning",
                 )
-                time.sleep(2)
+                time.sleep(8)
 
         return False
 
